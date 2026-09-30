@@ -130,3 +130,57 @@
     @apply font-sans;
     }
 }
+/* Animaciones pixeladas: steps() en vez de easing suave para el efecto 8 bits */
+@keyframes pixel-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    clip-path: inset(-100px -100px 100% -100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(-100px);
+  }
+}
+
+@keyframes header-drop {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes pixel-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal[data-visible="true"] {
+  animation: pixel-in 0.6s steps(6) var(--reveal-delay, 0ms) both;
+}
+
+.header-drop {
+  animation: header-drop 0.4s steps(4) both;
+}
+
+.pixel-cursor::after {
+  content: "_";
+  animation: pixel-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+  }
+
+  .reveal[data-visible="true"],
+  .header-drop,
+  .pixel-cursor::after {
+    animation: none;
+  }
+}
