@@ -156,6 +156,46 @@
   }
 }
 
+@keyframes pixel-float {
+  to {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pixel-sway {
+  from {
+    rotate: -6deg;
+  }
+  to {
+    rotate: 6deg;
+  }
+}
+
+/* Ráfagas de viento que lo empujan hacia la izquierda y lo dejan volver flotando */
+@keyframes pixel-drift {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  20% {
+    translate: -22px -12px;
+    rotate: -9deg;
+  }
+  40% {
+    translate: -36px -4px;
+    rotate: -5deg;
+  }
+  60% {
+    translate: -28px -16px;
+    rotate: 2deg;
+  }
+  80% {
+    translate: -10px -8px;
+    rotate: 5deg;
+  }
+}
+
 .reveal {
   opacity: 0;
 }
@@ -166,6 +206,21 @@
 
 .header-drop {
   animation: header-drop 0.4s steps(4) both;
+}
+
+.pixel-float {
+  animation: pixel-float 1.6s steps(4) infinite alternate;
+}
+
+/* Flota y además se balancea de lado a lado, como una criatura suspendida en el aire */
+.pixel-sway {
+  animation:
+    pixel-float 1.6s steps(4) infinite alternate,
+    pixel-sway 2.8s steps(8) infinite alternate;
+}
+
+.pixel-drift {
+  animation: pixel-drift 4.5s steps(5) infinite;
 }
 
 .pixel-cursor::after {
@@ -180,6 +235,9 @@
 
   .reveal[data-visible="true"],
   .header-drop,
+  .pixel-float,
+  .pixel-sway,
+  .pixel-drift,
   .pixel-cursor::after {
     animation: none;
   }

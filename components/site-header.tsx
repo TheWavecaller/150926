@@ -35,12 +35,16 @@ export function SiteHeader() {
           scrolled ? "h-16" : "h-20"
         )}
       >
-        {/* Logo provisional hasta tener el definitivo */}
-        <a
-          href="/"
-          className="flex h-12 shrink-0 items-center border-2 border-dashed border-[#ff0088] px-4 text-xl tracking-widest text-[#ff0088]"
-        >
-          LOGO
+        {/* Love Ball a tamaño nativo (18x18) escalada x3 sin difuminar */}
+        <a href="/" aria-label="Inicio" className="shrink-0 transition-transform hover:-rotate-12">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/multimedia/loveball.png"
+            alt=""
+            width={54}
+            height={54}
+            className="block [image-rendering:pixelated] drop-shadow-[0_0_12px_rgba(255,0,136,0.6)]"
+          />
         </a>
 
         <form role="search" className="mx-auto hidden w-full max-w-sm md:block">
